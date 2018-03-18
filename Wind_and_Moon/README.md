@@ -18,3 +18,6 @@ http://www.runoob.com/python/att-string-zfill.html
 https://segmentfault.com/q/1010000004660365/a-1020000004847306
 https://segmentfault.com/q/1010000008418332
 等等
+
+## 效果
+![如图](https://raw.githubusercontent.com/yo1995/Daily_Python_Tasks/master/Wind_and_Moon/compilation.jpg)

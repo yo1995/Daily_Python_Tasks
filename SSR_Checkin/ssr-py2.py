@@ -37,8 +37,8 @@ def match_flows(str):
 
 reload(sys)
 sys.setdefaultencoding("utf8")
-email = '4105@bupt.edu.cn'
-password = 'yrz666'
+email = 'your@email'
+password = 'yourpswd'
 loginurl = 'https://ssr.0v0.cat/auth/login'
 # 这行代码，是用来维持cookie的，你后续的操作都不用担心cookie，他会自动带上相应的cookie
 s = requests.Session()

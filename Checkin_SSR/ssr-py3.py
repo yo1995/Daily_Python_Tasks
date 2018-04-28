@@ -1,4 +1,5 @@
 #! /usr/bin/env python
+#! python3
 # coding:utf-8
 import re
 import requests

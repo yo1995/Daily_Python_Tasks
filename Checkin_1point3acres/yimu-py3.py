@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+#! python3
 
 __author__ = 'cht'
 '''
@@ -15,6 +16,7 @@ import random
 import hashlib
 import logging
 import time
+import datetime
 import http.cookiejar
 from bs4 import BeautifulSoup
 from urllib import request
@@ -75,7 +77,7 @@ class yimu(object):
             checkin_info = self.match_result(str(soup))
             str_log = self.strip_tag(str(checkin_info[0])) + '，' + self.name + "已累计签到: " + self.strip_tag(str(checkin_info[1])) + '天，本月签到' + self.strip_tag(str(checkin_info[2])) + '天，上次时间' + self.strip_tag(str(checkin_info[3]))
             print(str_log)
-			logging.info(strlog)
+            logging.info(str_log)
 
     def sign(self, url):
         # logging.debug('start bbs sign : %s' % url)
@@ -129,7 +131,12 @@ class yimu(object):
 
 
 if __name__ == '__main__':
-    userlogin = yimu('username', 'password') 
+    weekday = datetime.datetime.now().weekday()
+    sleep_time = (300 if (weekday > 4) else 0)
+    sleep_time = sleep_time + 60 * random.random()
+    print(sleep_time)
+    time.sleep(sleep_time)  # 假装周末睡过头没有及时签到
+    userlogin = yimu('username', 'password')
     bbs_login_data = userlogin.login_data()
     Login_Url = "http://www.1point3acres.com/bbs/member.php?mod=logging&action=login&loginsubmit=yes&infloat=yes&lssubmit=yes&inajax=1"
     userlogin.login_bbs(Login_Url, bbs_login_data)

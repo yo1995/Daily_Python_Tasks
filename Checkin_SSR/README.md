@@ -7,3 +7,7 @@ Not authentication, clear text password storage, no user-agent or cookies or oth
 Works fine with ss-panel check-in process.
 
 please use crontab to deploy and run periodically.
+
+### edit 20180428
+
+added python3 version.

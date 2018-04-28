@@ -26,3 +26,7 @@ A simple check in script for http://www.1point3acres.com/bbs/dsu_paulsign-sign.h
 
 留学论坛一亩三分地签到脚本，采用基本的表单填写模拟方法。如果未来升级为更复杂的验证步骤可考虑换为selenium。
 用法见repo内。
+
+## [Checkin] dianbook.cc / gezhongshu.com
+
+A simple check in script for http://dianbook.cc. See in repo

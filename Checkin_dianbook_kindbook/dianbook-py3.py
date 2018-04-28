@@ -2,7 +2,8 @@
 
 __author__ = 'cht'
 '''
-1point3acres bbs checkin
+dianbook.cc bbs checkin
+http://dianbook.cc/plugin.php?id=k_misign:sign
 credits: 
 - https://github.com/vpzlin/PyProjZ/blob/master/examples/Python%E6%BA%90%E7%A0%81%E5%8F%82%E8%80%83/pythonmaterial/scripts-shell/python%E8%AE%BA%E5%9D%9B%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%88%B0%E7%94%A8bs4%E6%A8%A1%E5%9D%97.py
 - https://github.com/JeffChern/1point3acres_AutoLogin
@@ -61,8 +62,8 @@ class yimu(object):
                     s_formhash = input['value']
                     break
 
-            loginparams = {'formhash': s_formhash, 'qdxq': s_qdxq, 'qdmode': s_qdmode, 'todaysay': '今天把论坛帖子介绍给好基友了~'}
-            req = urllib.request.Request(r'http://www.1point3acres.com/bbs/' + s_action, urllib.parse.urlencode(loginparams).encode("gbk"), headers=self._getHeaders())
+            loginparams = {'formhash': s_formhash, 'qdxq': s_qdxq, 'qdmode': s_qdmode, 'todaysay': u'今天把论坛帖子介绍给好基友了~'}
+            req = urllib.request.Request(r'http://www.1point3acres.com/bbs/' + s_action, urllib.parse.urlencode(loginparams).encode("utf8"), headers=self._getHeaders())
             response = urllib.request.urlopen(req)
             self.operate = self.opener.open(req)
             thepage = response.read()  # .decode('utf-8')
@@ -75,7 +76,6 @@ class yimu(object):
             checkin_info = self.match_result(str(soup))
             str_log = self.strip_tag(str(checkin_info[0])) + '，' + self.name + "已累计签到: " + self.strip_tag(str(checkin_info[1])) + '天，本月签到' + self.strip_tag(str(checkin_info[2])) + '天，上次时间' + self.strip_tag(str(checkin_info[3]))
             print(str_log)
-			logging.info(strlog)
 
     def sign(self, url):
         # logging.debug('start bbs sign : %s' % url)

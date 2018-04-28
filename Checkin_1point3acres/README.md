@@ -1,5 +1,7 @@
 ## Description
 
+![logo](http://www.1point3acres.com/bbs/static/image/common/logo.png)
+
 A simple check in script for http://www.1point3acres.com/bbs/dsu_paulsign-sign.html
 
 Based on the regular webpage request methods and procedures. Username and password are stored in the script as clear text, so be sure the file won't be exposed to public!
@@ -8,7 +10,9 @@ Post data, cookie and headers are constructed to meet the form requirements of t
 
 一亩三分地签到脚本，采用Python3，代码结构简洁易懂。
 
-### 20180428 v1.0
+## Versions
+
+### 20180428 v1.0.0
 
 added python3 version.
 
@@ -19,6 +23,21 @@ Works fine with 1point3acres 一亩三分地 check-in 签到 process.
 
 Please use python3 and crontab to deploy and run periodically if needed.
 
-### 使用方法
+### 20180428 v1.0.1
+
+fixed gbk encoding issue
+
+## 使用方法
 
 改写脚本中用户名和密码，直接运行或定时运行即可。将输出日志记录签到成功状态。~~运行有问题可自行debug~~
+注明出处任意转载，但请低调使用，省得迭代~
+如果喜欢烦请star，如有问题issue
+
+## 未来可能添加
+
+- 时间段内随机睡眠时间，降低非人类嫌疑
+
+
+## 关键词
+
+dsu_paulsign:sign | dsu_paulsign-sign.html | 一亩三分地 | 每日签到 | 【DSU】每日签到 Ver 4.8.1 © BranchZero

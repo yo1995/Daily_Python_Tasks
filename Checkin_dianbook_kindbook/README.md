@@ -18,6 +18,10 @@ Post data, cookie and headers are constructed to meet the form requirements of t
 
 - added python3 version.
 
+### 20180501 v1.0.1
+
+- added assertion for login failure
+
 ## 使用方法
 
 Please use python3 and crontab to deploy and run periodically if needed.

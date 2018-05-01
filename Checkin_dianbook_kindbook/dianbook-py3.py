@@ -41,13 +41,17 @@ class dianbook(object):
             s_formhash = re_hash.findall(str(soup))[0]
             qiandao_url = 'http://dianbook.cc/plugin.php?id=k_misign:sign&operation=qiandao&formhash={0}'.format(s_formhash)
             qiandao_url = qiandao_url + '&from=insign'
+            print(qiandao_url)
             check_url = 'http://dianbook.cc/plugin.php?id=k_misign:sign'
-            req = requests.get(qiandao_url, headers=self._get_headers())
+            req = urllib.request.Request(qiandao_url, headers=self._get_headers())
+            urllib.request.urlopen(req)  # check in
             req2 = urllib.request.Request(check_url, headers=self._get_headers())
             response = urllib.request.urlopen(req2)
             self.operate = self.opener.open(req2)
             thepage = response.read()  # .decode('utf-8')
             result_soup = BeautifulSoup(thepage, "html.parser")
+            btnvisited = soup.find_all('div', class_='btnvisited')
+            assert(btnvisited is not None)  # v1.0.1 add assertion failure
             checkin_info = self.match_result(str(result_soup))
             str_log = self.strip_tag(
                 "签到成功！排名：" + self.strip_tag(str(checkin_info[0]))) + '，' + self.name + "已累计签到: " + self.strip_tag(
@@ -55,7 +59,7 @@ class dianbook(object):
                 str(checkin_info[3]) + '点券' + nowtime)
             print('签到成功！' + nowtime)
             logging.info(str_log)
-        except IndexError:
+        except (IndexError, AssertionError):
             print('签到错误！' + nowtime)
             logging.error('签到错误！' + nowtime)
 
@@ -124,7 +128,7 @@ class dianbook(object):
 
 
 if __name__ == '__main__':
-    userlogin = dianbook('abcdef', '123456')  # 'username', 'password'
+    userlogin = dianbook('def', '123456')  # 'username', 'password'
     bbs_login_data = userlogin.login_data()
     Login_Url = "http://dianbook.cc/member.php?mod=logging&action=login&loginsubmit=yes&infloat=yes&lssubmit=yes&inajax=1"
     userlogin.login_bbs(Login_Url, bbs_login_data)

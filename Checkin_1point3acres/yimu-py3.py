@@ -18,9 +18,11 @@ import logging
 import time
 import datetime
 import http.cookiejar
+
 from bs4 import BeautifulSoup
 from urllib import request
 from urllib import parse
+# from smtp_notifier import send_mail  # if needed, you could use my smtp_notifier script for sending email warning msg.
 
 logging.basicConfig(filename='1point3acres-log.log', level=logging.INFO)
 
@@ -78,6 +80,7 @@ class yimu(object):
             str_log = self.strip_tag(str(checkin_info[0])) + '，' + self.name + "已累计签到: " + self.strip_tag(str(checkin_info[1])) + '天，本月签到' + self.strip_tag(str(checkin_info[2])) + '天，上次时间' + self.strip_tag(str(checkin_info[3]))
             print(str_log)
             logging.info(str_log)
+
 
     def sign(self, url):
         # logging.debug('start bbs sign : %s' % url)

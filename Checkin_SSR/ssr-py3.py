@@ -34,15 +34,15 @@ def match_flows(str):
     # 这段代码是用于解决中文报错的问题
 
 
-email = 'a@b'
-password = 'cd'
+email = 'aa'
+password = 'bbb'
 loginurl = 'https://ssr.0v0.xyz/auth/login'
 # 这行代码，是用来维持cookie的，你后续的操作都不用担心cookie，他会自动带上相应的cookie
 s = requests.Session()
 # 我们需要带表单的参数
 loginparams = {'email': email,'passwd': password, 'remember_me': 'ture'}
 # post 数据实现登录
-r = s.post(loginurl, data=loginparams)
+s.post(loginurl, data=loginparams)
 # 验证是否登陆成功，抓取首页看看内容
 r = s.get(loginurl)
 res = check(r.content.decode('utf-8'))  # 0=不能签到;1=可以签到;-1=什么都没找到;

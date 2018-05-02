@@ -25,6 +25,10 @@ Don't know if that will change someday in the future. If salt is added, more wor
 
 - 时间段内随机睡眠时间，降低非人类嫌疑
 
+### 20180502 v1.0.2
+
+- added email notification option
+
 ## 使用方法
 
 Works fine with 1point3acres 一亩三分地 check-in 签到 process.

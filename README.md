@@ -30,3 +30,14 @@ A simple check in script for http://www.1point3acres.com/bbs/dsu_paulsign-sign.h
 ## [Checkin] dianbook.cc / gezhongshu.com
 
 A simple check in script for http://dianbook.cc. See in repo
+
+## [AddOn] 邮件通知脚本
+
+A simple email notification utility.
+
+## [Checkin] http://muchong.com 小木虫论坛
+
+A simple check in script for http://muchong.com/bbs/memcp.php?action=getcredit. See in repo
+
+科研学术论坛小木虫签到脚本，获取金币。解决了自动化填写验证问题的痛点。用法见repo内。
+

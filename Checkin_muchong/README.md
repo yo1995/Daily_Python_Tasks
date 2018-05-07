@@ -12,7 +12,7 @@ Also, to meet the 2-step verification requirement of that site, a simple parser 
 
 小木虫论坛签到脚本，采用Python3，代码结构简洁易懂。
 
-由https://github.com/andyyelu/muchong_checkin所启发，更改优化了其代码结构，并添加了少量容错处理。
+由https://github.com/andyyelu/muchong_checkin 所启发，更改优化了其代码结构，并添加了少量容错处理。
 
 ## Versions
 

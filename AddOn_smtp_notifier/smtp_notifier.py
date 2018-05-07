@@ -7,15 +7,22 @@ https://bbs.byr.cn/#!article/BUPTNet/91465
 
 import smtplib
 import time
-import logging
 
 from email.header import Header
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.utils import formataddr
 # from email.mime.application import MIMEApplication
+# logging.basicConfig(filename='smtp.log', level=logging.WARNING, format='%(asctime)s - %(levelname)s - %(message)s')
 
-logging.basicConfig(filename='smtp-log.log', level=logging.WARNING, format='%(asctime)s - %(levelname)s - %(message)s')
+import logging
+logger = logging.getLogger(__name__)
+logger.setLevel(level=logging.WARNING)
+handler = logging.FileHandler('smtp-log.log')
+handler.setLevel(logging.WARNING)
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+handler.setFormatter(formatter)
+logger.addHandler(handler)
 
 
 def send_mail(sender_address, sender_password, receiver_address, smtp_server, subject="脚本异常报告", smtp_port=25, body="测试邮件发送"):

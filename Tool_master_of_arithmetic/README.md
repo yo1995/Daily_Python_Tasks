@@ -1,3 +1,5 @@
+![logo](http://www.wanweixin.com/datafile/2018/05/1_201805021925181zCcq.jpg)
+
 ## Description
 
 『加减大师』、『加减王者』通用辅助解题~~外挂~~程序。能够延长所需答题时间或直接给出题目答案，从而使您闯关过程中一路平安。
@@ -45,3 +47,7 @@ $ mitmproxy -p 8129 -s ./jjds-py3.py
 ## Keywords
 
 加减大师 | 加减王者 | 微信小游戏 | 辅助 | 自动化
+
+## Special thanks
+
+感谢[一个](https://gist.github.com/ImSingee/81e578392231541336acb7fc3c73019f)与[另一个](https://github.com/DengMr/jjds)作者的无私奉献，从中学习良多！

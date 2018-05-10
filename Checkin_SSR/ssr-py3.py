@@ -7,7 +7,7 @@ import logging
 import time
 # 配置日志文件和日志级别
 logging.basicConfig(filename='SSR-log.log', level=logging.INFO)
-
+logging.getLogger("requests").setLevel(logging.WARNING)
 
 def check(str):
     hasCheckIn = u'<button id="checkin" class="btn btn-success  btn-flat">'

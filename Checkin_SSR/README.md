@@ -10,4 +10,6 @@ please use crontab to deploy and run periodically.
 
 ### edit 20180428
 
-added python3 version.
+- added python3 version.
+
+- added logging level settings for requests so that log file won't record infos.

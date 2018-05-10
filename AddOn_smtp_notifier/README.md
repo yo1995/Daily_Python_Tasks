@@ -12,6 +12,10 @@ A simple add-on script for sending logging information to designated email addre
 
 - added SSL support choice
 
+### 20180507 v1.0.1
+
+- solve an issue which will cause logging override when imported
+
 ## Usage
 
 1. download and put this script within the dir of your check-in script

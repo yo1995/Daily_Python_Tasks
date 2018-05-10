@@ -18,18 +18,18 @@
 
 	在终端中运行以下命令，或在您使用的IDE中安装此依赖库
 
-```
-$ pip3 install mitmproxy
-```
+	```
+	$ pip3 install mitmproxy
+	```
 
 3. 下载jjds-py3.py脚本，并切换至脚本所在目录
 
 4. 在终端中运行以下命令
 
-```
-$ mitmproxy -p 8129 -s ./jjds-py3.py
-```
-// 端口号可自行设定，防止冲突且与后文保持一致。
+	```
+	$ mitmproxy -p 8129 -s ./jjds-py3.py
+	```
+	// 端口号可自行设定，防止冲突且与后文保持一致。
 
 5. 设置代理
 

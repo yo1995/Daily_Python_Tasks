@@ -64,7 +64,9 @@ class yimu(object):
                     s_formhash = input['value']
                     break
 
-            loginparams = {'formhash': s_formhash, 'qdxq': s_qdxq, 'qdmode': s_qdmode, 'todaysay': '今天把论坛帖子介绍给好基友了~'}
+            todaysay = r'今天把论坛帖子介绍给好基友了~'
+            todaysay = todaysay.encode("gbk")
+            loginparams = {'formhash': s_formhash, 'qdxq': s_qdxq, 'qdmode': s_qdmode, 'todaysay': todaysay}
             req = urllib.request.Request(r'http://www.1point3acres.com/bbs/' + s_action, urllib.parse.urlencode(loginparams).encode("gbk"), headers=self._getHeaders())
             response = urllib.request.urlopen(req)
             self.operate = self.opener.open(req)
@@ -79,7 +81,6 @@ class yimu(object):
             str_log = self.strip_tag(str(checkin_info[0])) + '，' + self.name + "已累计签到: " + self.strip_tag(str(checkin_info[1])) + '天，本月签到' + self.strip_tag(str(checkin_info[2])) + '天，上次时间' + self.strip_tag(str(checkin_info[3]))
             print(str_log)
             logging.info(str_log)
-
 
     def sign(self, url):
         # logging.debug('start bbs sign : %s' % url)

@@ -29,6 +29,10 @@ Don't know if that will change someday in the future. If salt is added, more wor
 
 - added email notification option
 
+### 20180512 v1.0.3
+
+- 重新修复gbk编码问题，防止提交数据出现乱码
+
 ## 使用方法
 
 Works fine with 1point3acres 一亩三分地 check-in 签到 process.

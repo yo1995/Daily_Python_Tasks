@@ -140,7 +140,7 @@ if __name__ == '__main__':
         print('Usage: python3 sp-py3.py [mode:14/15], default daily mode = 15.')
         mode1 = 15
     else:
-        mode1 = sys.argv[1]
+        mode1 = int(sys.argv[1])
 
     if mode1 != 14 and mode1 != 15:
         err_log = '错误的任务id！签到取消，请检查模式设置。'

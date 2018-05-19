@@ -6,7 +6,7 @@ For those images uploaded to imgfile.net(a.k.a. PixSense, chaosimg, vestimage, e
 
 ## Steps
 
-1. first, right-click on the post to F12 to find the corresponding blockquote block;
+1. first, right-click on the post to F12 to find the corresponding [blockquote] block;
 2. second, copy element or ctrl-c to strip down the block of html code and paste it in a txt file;
 3. run the scipt with Python3, key in the previous txt file name and the foldername which you want to save the images to under current directory;
 4. [important & vulnerable] key in the initial letter of the model's name. e.g. PashaT -> p(non-case-sensitive)

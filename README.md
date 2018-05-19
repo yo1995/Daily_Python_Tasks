@@ -41,3 +41,24 @@ A simple check in script for http://muchong.com/bbs/memcp.php?action=getcredit. 
 
 科研学术论坛小木虫签到脚本，获取金币。解决了自动化填写验证问题的痛点。用法见repo内。
 
+## [Tool] TProuter_reboot
+
+A simple script to reboot a typical TP-Link router. 
+
+一次因为路由器卡顿造成广域网比局域网速度快，发现原因是路由器运行时间过长导致的。Archer C7没有定时重启功能，想到写一个路由器重启脚本。
+
+## [Tool] thumbnail_generator
+
+配合我博客中相册功能使用。由于repo空间宝贵相册暂时停止新添内容。
+
+## [Tool] 加减大师/加减王者 小辅助
+
+『加减大师』、『加减王者』通用辅助解题~~外挂~~程序。能够延长所需答题时间或直接给出题目答案，从而使您闯关过程中一路平安。
+
+## [Checkin] southplus
+
+奇怪网站的签到脚本，与之前步骤不尽相同。好学的~~绅士~~同学请低调使用。
+
+## Dumpster_of_ideas
+
+实验性代码垃圾桶，欢迎翻找以寻求灵感！不保证文档详尽。

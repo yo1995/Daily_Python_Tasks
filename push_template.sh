@@ -2,6 +2,7 @@ Cur_Dir=$(pwd)
 echo $Cur_Dir
 cd $Cur_Dir
 
+git status
 git add .
 read -p "当前提交版本：" version
 read -p "键入今日提交次序：" order

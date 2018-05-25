@@ -39,6 +39,7 @@ class dianbook(object):
         nowtime = time.strftime('%Y-%m-%d %H:%M', time.localtime(time.time()))  # 获取当前时间
         try:
             assert('您今天还没有签到' in str(soup))  # v1.0.1 add assertion failure # v1.0.2 update
+
             re_hash = re.compile(r'action=logout&amp;formhash=(.*?)">')
             s_formhash = re_hash.findall(str(soup))[0]
             qiandao_url = 'http://dianbook.cc/plugin.php?id=k_misign:sign&operation=qiandao&formhash={0}'.format(s_formhash)
@@ -62,8 +63,9 @@ class dianbook(object):
             logging.info(str_log)
             return True
         except (IndexError, AssertionError):
-            print('签到错误！' + nowtime)
-            logging.error('签到错误！' + self.name + nowtime)
+            err_msg = '签到错误！可能是已签到或未到时间。'
+            print(err_msg + nowtime)
+            logging.error(err_msg + self.name + nowtime)
             return False
 
     def sign(self, url):
@@ -71,7 +73,7 @@ class dianbook(object):
         req = urllib.request.Request(url, headers=self._get_headers())
         response = urllib.request.urlopen(req)
         self.opener.open(req)
-        thepage = response.read() # .decode('utf-8')
+        thepage = response.read().decode('utf-8', errors='replace')
         return self._say(thepage)
 
     def login_bbs(self, url, data):
@@ -131,14 +133,14 @@ class dianbook(object):
 
 
 if __name__ == '__main__':
-    userlogin = dianbook('abcdef', '123456')  # 'username', 'password'
+    userlogin = dianbook('aaaaaa', '123456')  # 'username', 'password'
     bbs_login_data = userlogin.login_data()
     Login_Url = "http://dianbook.cc/member.php?mod=logging&action=login&loginsubmit=yes&infloat=yes&lssubmit=yes&inajax=1"
     userlogin.login_bbs(Login_Url, bbs_login_data)
     if not userlogin.sign('http://dianbook.cc/plugin.php?id=k_misign:sign'):
         time.sleep(60)  # once the time of website was late by 1 minute. add to avoid this circumstance
         if not userlogin.sign('http://dianbook.cc/plugin.php?id=k_misign:sign'):
-            send_mail('fromaddress', 'usrname', 'toaddress', 'server', "点书网异常报告", 465, '签到错误！已尝试两次签到未能成功。')
+            send_mail('from', 'pwd', 'to', 'server', "点书网异常报告", 465, '签到错误！已尝试两次签到未能成功。')
         else:
             print('success!')
     else:

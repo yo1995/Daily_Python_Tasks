@@ -22,6 +22,10 @@ Post data, cookie and headers are constructed to meet the form requirements of t
 
 - added assertion for login failure
 
+### 20180523 v1.0.3
+
+- 改进了编码解码方式，兼容性更好。
+
 ## 使用方法
 
 Please use python3 and crontab to deploy and run periodically if needed.

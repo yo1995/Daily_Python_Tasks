@@ -1,0 +1,220 @@
+/**
+ * @author Jannchie
+ * @email jannchie@gmail.com
+ * @create date 2018-05-03 08:44:46
+ * @modify date 2018-07-19 01:24:39
+ * @desc [description]
+*/
+body {
+    margin: 0px;
+}
+
+.domain {
+    display: none;
+}
+
+.tick line {
+    stroke: #C0C0BB;
+}
+
+.tick text {
+    fill: #8E8883;
+    font-size: 12pt;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.label {
+    fill: rgb(92, 92, 92);
+    font-size: 15pt;
+    font-family: "Microsoft YaHei", "宋体";
+    font-weight: bold
+}
+
+.dateLabel {
+    
+    fill: rgb(92, 92, 92);
+    display:table-cell;
+    font-size: 90pt;
+    font-weight: bold;
+    font-family: 'Segoe UI', 'console', Calibri, sans-serif;
+}
+.dateLabelRed {
+    
+    fill: rgb(167, 46, 46);
+    display:table-cell;
+    font-size: 90pt;
+    font-weight: bold;
+    font-family: 'Segoe UI', 'console', Calibri, sans-serif;
+}
+
+
+.days {
+    fill: rgb(92, 92, 92);
+    font-weight: bold;
+    font-size: 55pt;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.topLabel {
+    fill: rgb(92, 92, 92);
+    font-weight: bold;
+    font-size: 40pt;
+    font-family: 'Gill Sans', 'Gill Sans MT', "Calibri", 'Trebuchet MS', sans-serif;
+}
+
+.top {
+    fill: rgb(92, 92, 92);
+    font-weight: bold;
+    font-size: 62pt;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+}
+
+.value {
+    fill: rgb(138, 46, 46);
+    font-size: 20pt;
+    font-weight: 400;
+    font-family: "Trebuchet MS";
+}
+
+.barInfo {
+    fill: rgb(255, 255, 255);
+    font-size: 22pt;
+    font-weight: 800;
+    font-family: sans-serif;
+}
+
+.axis-label {
+    fill: #635F5D;
+    font-size: 32pt;
+    font-family: sans-serif;
+}
+
+.days {
+    fill: rgb(92, 92, 92);
+    font-weight: bold;
+    font-size: 40pt;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.dayslabel {
+    fill: rgb(92, 92, 92);
+    font-weight: bold;
+    font-size: 25pt;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.growth {
+    fill: rgb(92, 92, 92);
+    font-weight: bold;
+    font-size: 40pt;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.L {
+    fill: #004e97c9
+}
+
+.M {
+    fill: #236aacc9
+}
+
+.L {
+    fill: #004e97c9
+}
+
+.N {
+    fill: #009783c9
+}
+
+.O {
+    fill: #009714c9
+}
+
+.P {
+    fill: #b11111c9
+}
+
+.Q {
+    fill: #972b00c9
+}
+
+.R {
+    fill: #970065c9
+}
+
+.S {
+    fill: #008597c9
+}
+
+.T {
+    fill: #8b1f5ec9
+}
+
+.U {
+    fill: #8b1f5ec9
+}
+
+.W {
+    fill: #8b1f5ec9
+}
+
+.V {
+    fill: #559204c9
+}
+
+.X {
+    fill: #5a1f8bc9
+}
+
+.Y {
+    fill: #c0ad00c9
+}
+
+.Z {
+    fill: #88480cc9
+}
+
+.H {
+    fill: #787878
+}
+
+.G {
+    fill: #CB1B45
+}
+
+.K {
+    fill: #9c361f
+}
+
+.J {
+    fill: rgb(180, 157, 51)
+}
+
+.I {
+    fill: #1B813E
+}
+
+.F {
+    fill: #227D51
+}
+
+.E {
+    fill: #00896C
+}
+
+.D {
+    fill: #0F2540
+}
+
+.C {
+    fill: #2EA9DF
+}
+
+.B {
+    fill: #3C2F41
+}
+
+.A {
+    fill: #876633
+}
+

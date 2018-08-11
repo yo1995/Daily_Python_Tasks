@@ -9,7 +9,7 @@ import random
 import multiprocessing
 
 
-def download_pic(url1, url2, url3, new_path2):
+def download_pic(url1, url2, url3, new_path2, index):
     try:
         content = urllib.request.urlopen(url1).read()
     except Exception as e:
@@ -23,14 +23,16 @@ def download_pic(url1, url2, url3, new_path2):
                 return False
     with open(new_path2, 'wb') as saved_pic:
         saved_pic.write(content)
+        print('finish # ', index)
         return True
 
 
 # main
 if __name__ == '__main__':
+    cwd = sys.path[0]
     filename = input("please input the links filename :")
     try:
-        f = open(filename + '.txt', 'r', encoding='UTF-8')
+        f = open(cwd + '/' + filename + '.txt', 'r', encoding='UTF-8')
     except:
         print('filename error')
         sys.exit(0)
@@ -39,8 +41,7 @@ if __name__ == '__main__':
     folder_name = input("please input the foldername :")
     initial = input("the initial letter of the model :")
     initial = '/' + initial.upper() + '.*.jpg'
-    path = os.getcwd()
-    new_path = os.path.join(path, folder_name)
+    new_path = os.path.join(cwd, folder_name)
     if not os.path.isdir(new_path):
         os.mkdir(new_path)
     url = re.findall(r'src="(.+?\.jpg)"', lines[count - 2], re.I)
@@ -89,7 +90,7 @@ if __name__ == '__main__':
         # with open(new_path2, 'wb') as saved_pic:
         #     saved_pic.write(content)
         print('current downloading', i + 1)
-        pool1.apply_async(download_pic, args=(url1, url2, url3, new_path2))
+        pool1.apply_async(download_pic, args=(url1, url2, url3, new_path2, i + 1))
         # this part need to be polished.
         # assert (download_status_flag)  # False abort the main program
 
@@ -97,6 +98,7 @@ if __name__ == '__main__':
     pool1.join()
     print('==============================')
     print(u'All Done!')
+    input('press any key to exit.')
 
     sys.exit(0)
 

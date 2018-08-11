@@ -31,8 +31,6 @@ A very basic collection of Python3 scripts/wrappers to handle dlib/opencv usages
 
 ML | tool | dlib | opencv | camera | menpo | face recognition | 
 
-## NSFW version
+## NSFW version ;-)
 
-	with chrome
-
-![models](./nsfw.webp)
+	with chrome => [models](./nsfw.webp) <=

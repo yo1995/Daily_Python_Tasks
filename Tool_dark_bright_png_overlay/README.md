@@ -2,7 +2,7 @@
 
 ## Description
 
-A simple script to.
+A simple script to generate a interesting png composition of two pictures. Could be used to hide some *dark secret* behind harmless peace ;-)
 
 ## Versions
 
@@ -13,6 +13,8 @@ A simple script to.
 ## Usage
 
 run it. no input will use default settings. drag file into it or key in the path for each image.
+
+- adjust the brightness factor for dark image. 0 means no adjustment and 1 is total black. 0.5 is typically good practice.
 
 ### so how to see the difference?
 

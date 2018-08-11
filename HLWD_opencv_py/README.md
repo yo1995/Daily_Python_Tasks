@@ -33,4 +33,6 @@ ML | tool | dlib | opencv | camera | menpo | face recognition |
 
 ## NSFW version ;-)
 
-	with chrome => [models](./nsfw.webp) <=
+	with chrome 
+
+[models](./nsfw.webp)

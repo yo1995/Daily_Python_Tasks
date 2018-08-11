@@ -21,7 +21,7 @@ def mosaic(selected_image, face_pos, nsize=30):
     # return dist
 
 
-def discern(image):
+def discern(image, rec=True, fit=True, mos=True):
     gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
     dets = detector(gray, 1)
     for face in dets:
@@ -30,18 +30,21 @@ def discern(image):
         right = face.right()
         bottom = face.bottom()
         shape = predictor(image, face)  # 寻找人脸的68个标定点
-        mosaic(image, face, 25)
+        if mos:
+            mosaic(image, face, 8)
         # circle out all the points
         for pt in shape.parts():
             pt_pos = (pt.x, pt.y)
-            cv2.circle(image, pt_pos, 4, (0, 255, 0), 2)
-        cv2.rectangle(image, (left, top), (right, bottom), (0, 255, 0), 2)
+            if fit:
+                cv2.circle(image, pt_pos, 4, (0, 255, 0), 2)
+        if rec:
+            cv2.rectangle(image, (left, top), (right, bottom), (0, 255, 0), 2)
 
 
 if __name__ == '__main__':
     t1 = time.time()
-    img = cv2.imread('face.jpg')
-    discern(img)
+    img = cv2.imread(cwd + '/dashataran.jpg')
+    discern(img, rec=True, fit=True, mos=False)
     print('time used: ' + str(time.time() - t1))
     # img = mosaic(img, 30)
     # cv2.blur(img, (10, 10), img)

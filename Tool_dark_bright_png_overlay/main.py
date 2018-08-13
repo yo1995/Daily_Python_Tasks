@@ -57,4 +57,4 @@ if __name__ == '__main__':
     img = Image.new('LA', dark_image.size)
     img.putdata(new_data)
 
-    img.save('output.png', 'PNG')
+    img.save(cwd + '/output.png', 'PNG')

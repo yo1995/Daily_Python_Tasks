@@ -35,4 +35,4 @@ ML | tool | dlib | opencv | camera | menpo | face recognition |
 
 	with chrome 
 
-[models](./nsfw.webp)
+[models](https://raw.githubusercontent.com/yo1995/Daily_Python_Tasks/master/HLWD_opencv_py/nsfw.webp)

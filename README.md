@@ -59,6 +59,38 @@ A simple script to reboot a typical TP-Link router.
 
 奇怪网站的签到脚本，与之前步骤不尽相同。好学的~~绅士~~同学请低调使用。
 
+## [Tool] 文字表情包生成器
+
+超级表情包生成器的前身。
+
+## [Tool] Windows XP 自动扫雷内存版
+
+读取内存一键扫雷通关。
+
+## [HLWD] pytorch
+
+待增加……
+
+## [Data] 时间轴对比动画
+
+网上看到很流行的可视化方案之一，收藏之。
+
+## [PR] PIL_floodfill
+
+给PIL提PR
+
+## [HLWD] OpenCV
+
+基于OpenCV和Dlib的调库侠
+
+## [Tool] dark_bright_png_overlay
+
+合成灰度png，实现隐藏背景深色图片的视觉欺骗效果
+
+## [Tool] FoodChooser
+
+选择困难症之大三食堂选择器
+
 ## Dumpster_of_ideas
 
 实验性代码垃圾桶，欢迎翻找以寻求灵感！不保证文档详尽。

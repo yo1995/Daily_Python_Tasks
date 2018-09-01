@@ -49,7 +49,7 @@ def flood_fill_partial(image, xy, value, thresh=0):
 
 if __name__ == '__main__':
     img_path = sys.argv[1]
-    img0 = Image.open(img_path)
+    img0 = Image.open(img_path).convert('RGB')
     t1 = time.time()
     flood_fill_partial(img0, (1, 1), (0, 255, 0), 0)
     print('time used: ' + str(time.time() - t1))

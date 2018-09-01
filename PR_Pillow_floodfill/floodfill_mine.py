@@ -55,14 +55,13 @@ def flood_fill_mine(image, xy, value, thresh=0):
     except (ValueError, IndexError):
         return  # seed point outside image
     edge = {(x, y)}
-    full_edge0 = set()
-    full_edge1 = set()
+    full_edge = set()
     i = 0
     while edge:
         new_edge = set()
         for (x, y) in edge:  # 4 adjacent method
             for (s, t) in ((x+1, y), (x-1, y), (x, y+1), (x, y-1)):
-                if ((s,t) in full_edge0) or ((s,t) in full_edge1):
+                if (s, t) in full_edge:
                     continue
                 i = i + 1
                 try:
@@ -70,14 +69,14 @@ def flood_fill_mine(image, xy, value, thresh=0):
                 except IndexError:
                     pass
                 else:
+                    full_edge.add((s, t))
                     if _color_diff(p, background) <= thresh:
                         pixel[s, t] = value
                         new_edge.add((s, t))
-                        full_edge0.add((s, t))
-        full_edge0 = full_edge1
-        full_edge1 = edge
+                        # full_edge.add((s, t))  # to improve performance
+        full_edge = edge
         edge = new_edge
-    print(i)
+    print('total iteration: ' + str(i))
 
 
 def floodfill_o(image, xy, value, border=None, thresh=0):
@@ -143,29 +142,30 @@ def floodfill_o(image, xy, value, border=None, thresh=0):
 
 if __name__ == '__main__':
 
-    img_path = 'rect-test-1000.jpg'
+    # img_path = 'rect-test-1000.jpg'
+    img_path = 'maze.bmp'
     # first mine
-    img0 = Image.open(img_path)
+    img0 = Image.open(img_path).convert('RGB')
     t1 = time.time()
-    flood_fill_mine(img0, (1, 1), (0, 255, 0), 0)
+    flood_fill_mine(img0, (1, 1), (0, 255, 0), 10)
     print(time.time() - t1)
     plt.imshow(img0)
     plt.ginput(1)
     plt.close()
 
     # first mine
-    img0 = Image.open(img_path)
+    img0 = Image.open(img_path).convert('RGB')
     t1 = time.time()
-    flood_fill_0(img0, (1, 1), (0, 255, 0), 0)
+    flood_fill_0(img0, (1, 1), (0, 255, 0), 10)
     print(time.time() - t1)
     plt.imshow(img0)
     plt.ginput(1)
     plt.close()
 
     # second original
-    img1 = Image.open(img_path)
+    img1 = Image.open(img_path).convert('RGB')
     t1 = time.time()
-    floodfill_o(img1, (1,1), (0,255,0), None, 0)
+    floodfill_o(img1, (1,1), (0,255,0), None, 10)
     print(time.time() - t1)
     plt.imshow(img1)
     plt.ginput(1)

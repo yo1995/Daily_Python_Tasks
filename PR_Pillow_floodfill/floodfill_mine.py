@@ -44,7 +44,25 @@ def flood_fill_0(image, xy, value, thresh=0):
     print(i)
 
 
-def flood_fill_mine(image, xy, value, thresh=0):
+def flood_fill_mine(image, xy, value, border=None, thresh=0):
+    """
+    (experimental) Fills a bounded region with a given color.
+
+    :param image: Target image.
+    :param xy: Seed position (a 2-item coordinate tuple). See
+        :ref:`coordinate-system`.
+    :param value: Fill color.
+    :param border: Optional border value.  If given, the region consists of
+        pixels with a color different from the border color.  If not given,
+        the region consists of pixels having the same color as the seed
+        pixel.
+    :param thresh: Optional threshold value which specifies a maximum
+        tolerable difference of a pixel value from the 'background' in
+        order for it to be replaced. Useful for filling regions of non-
+        homogeneous, but similar, colors.
+    """
+    # based on an implementation by Eric S. Raymond
+    # amended by yo1995 @20180806
     pixel = image.load()
     x, y = xy
     try:
@@ -54,27 +72,31 @@ def flood_fill_mine(image, xy, value, thresh=0):
         pixel[x, y] = value
     except (ValueError, IndexError):
         return  # seed point outside image
-    edge = {(x, y)}
-    full_edge = set()
     i = 0
+    edge = {(x, y)}
+    full_edge = set()  # use a set to keep record of current and previous edge pixels to reduce memory consumption
     while edge:
         new_edge = set()
         for (x, y) in edge:  # 4 adjacent method
             for (s, t) in ((x+1, y), (x-1, y), (x, y+1), (x, y-1)):
+
                 if (s, t) in full_edge:
-                    continue
+                    continue  # if already processed, skip
                 i = i + 1
                 try:
                     p = pixel[s, t]
-                except IndexError:
+                except (ValueError, IndexError):
                     pass
                 else:
                     full_edge.add((s, t))
-                    if _color_diff(p, background) <= thresh:
+                    if border is None:
+                        fill = _color_diff(p, background) <= thresh
+                    else:
+                        fill = p != value and p != border
+                    if fill:
                         pixel[s, t] = value
                         new_edge.add((s, t))
-                        # full_edge.add((s, t))  # to improve performance
-        full_edge = edge
+        full_edge = edge  # discard pixels proceeded
         edge = new_edge
     print('total iteration: ' + str(i))
 
@@ -147,7 +169,7 @@ if __name__ == '__main__':
     # first mine
     img0 = Image.open(img_path).convert('RGB')
     t1 = time.time()
-    flood_fill_mine(img0, (1, 1), (0, 255, 0), 10)
+    flood_fill_mine(img0, (1, 1), (0, 255, 0), None, 0)
     print(time.time() - t1)
     plt.imshow(img0)
     plt.ginput(1)
@@ -156,7 +178,7 @@ if __name__ == '__main__':
     # first mine
     img0 = Image.open(img_path).convert('RGB')
     t1 = time.time()
-    flood_fill_0(img0, (1, 1), (0, 255, 0), 10)
+    flood_fill_0(img0, (1, 1), (0, 255, 0), 0)
     print(time.time() - t1)
     plt.imshow(img0)
     plt.ginput(1)
@@ -165,7 +187,7 @@ if __name__ == '__main__':
     # second original
     img1 = Image.open(img_path).convert('RGB')
     t1 = time.time()
-    floodfill_o(img1, (1,1), (0,255,0), None, 10)
+    floodfill_o(img1, (1,1), (0,255,0), None, 0)
     print(time.time() - t1)
     plt.imshow(img1)
     plt.ginput(1)

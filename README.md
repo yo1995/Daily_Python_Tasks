@@ -91,6 +91,10 @@ A simple script to reboot a typical TP-Link router.
 
 选择困难症之大三食堂选择器
 
+## [Tool] N-gram generator
+
+a simple script to test n-gram method
+
 ## Dumpster_of_ideas
 
 实验性代码垃圾桶，欢迎翻找以寻求灵感！不保证文档详尽。

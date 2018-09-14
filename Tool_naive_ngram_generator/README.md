@@ -7,3 +7,7 @@ e.g. given "I was a"... and the corpora of Jane Austen's 'austen-sense.txt' from
 for this particular corpus, only n <= 3 is allowed. however, with a larger corpus, we might propogate towards 5-gram or so!
 
 no sanity check, no error handling, just a simple verifying script.
+
+## Usage
+
+run test.py after pip install all the dependencies.

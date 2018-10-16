@@ -59,7 +59,7 @@ class yimu(object):
             inputes = soup.find_all("input")
             s_formhash = ''
             s_qdxq = random.choice(qdxq)
-            s_qdmode = '1'
+            s_qdmode = '2'
             for input in inputes:
                 if input['name'] == 'formhash':
                     s_formhash = input['value']

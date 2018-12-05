@@ -53,7 +53,7 @@ class yimu(object):
         nowtime = time.strftime('%Y-%m-%d %H:%M', time.localtime(time.time()))  # 获取当前时间
 
         try:
-            qd_form = soup.find_all(id="qiandao")[0]
+            qd_form = soup.find_all("form", attrs={'name':'qiandao'})[0]
             s_action = qd_form['action']
             # print('s_action is : %s' % s_action)
             inputes = soup.find_all("input")

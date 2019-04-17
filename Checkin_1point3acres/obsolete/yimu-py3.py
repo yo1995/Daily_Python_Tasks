@@ -7,6 +7,7 @@ credits:
 - https://github.com/vpzlin/PyProjZ/blob/master/examples/Python%E6%BA%90%E7%A0%81%E5%8F%82%E8%80%83/pythonmaterial/scripts-shell/python%E8%AE%BA%E5%9D%9B%E8%87%AA%E5%8A%A8%E7%AD%BE%E5%88%B0%E7%94%A8bs4%E6%A8%A1%E5%9D%97.py
 - https://github.com/JeffChern/1point3acres_AutoLogin
 - https://github.com/wcyz666/MyScript/blob/master/1point3arcs.py
+如果报错的话可能需要把所有encode utf8改为gb2312.由于没有充分测试，如有问题烦请issue
 '''
 
 import urllib
@@ -17,26 +18,13 @@ import logging
 import time
 import datetime
 import http.cookiejar
-import requests
+
 from bs4 import BeautifulSoup
 from urllib import request
 from urllib import parse
-from smtp_notifier import send_mail
+# from smtp_notifier import send_mail  # if needed, you could use my smtp_notifier script for sending email warning msg.
 
 logging.basicConfig(filename='1point3acres-log.log', level=logging.INFO)
-
-
-def make_cookies():
-    # file_path = "change to cookies path"
-    # file_name = "cookies.txt"
-    with open("yimu-cookie.txt", "r") as fd:
-        cookie_str = fd.read()
-
-    cookies = {}
-    for item in cookie_str.split(";"):
-        item = item.strip().split("=")
-        cookies[item[0]] = item[1]
-    return cookies
 
 
 class yimu(object):
@@ -63,8 +51,6 @@ class yimu(object):
         soup = BeautifulSoup(html, "html.parser")
         qdxq = ['kx', 'ng', 'ym', 'wl', 'nu', 'ch', 'fd', 'yl', 'shuai']  # 签到心情列表
         nowtime = time.strftime('%Y-%m-%d %H:%M', time.localtime(time.time()))  # 获取当前时间
-        print('--------debug soup--------')
-        # print(soup)
 
         try:
             qd_form = soup.find_all("form", attrs={'name':'qiandao'})[0]
@@ -79,39 +65,37 @@ class yimu(object):
                     s_formhash = input['value']
                     break
 
+            # todaysay = r'可支持自定义每日一句~'
+            # todaysay = todaysay.encode("gbk")
+            # loginparams = {'formhash': s_formhash, 'qdxq': s_qdxq, 'qdmode': s_qdmode, 'todaysay': todaysay}
             loginparams = {'formhash': s_formhash, 'qdxq': s_qdxq, 'qdmode': s_qdmode, 'fastreply': 0}
-
-            session = requests.Session()
-            response = session.post(url=r'https://www.1point3acres.com/bbs/' + s_action, headers=self._getHeaders(), cookies=make_cookies(), data=loginparams)
-            thepage = response.text
-
+            req = urllib.request.Request(r'https://www.1point3acres.com/bbs/' + s_action, urllib.parse.urlencode(loginparams).encode("gbk"), headers=self._getHeaders())
+            response = urllib.request.urlopen(req)
+            self.operate = self.opener.open(req)
+            thepage = response.read()  # .decode('utf-8')
             result_soup = BeautifulSoup(thepage, "html.parser")
             for c in result_soup.find_all("div", class_="c"):
-                strlog = "签到状态："+ self.name + self.strip_tag(str(c)) + '，签到时间：' + nowtime
+                strlog = "签到状态：" + self.strip_tag(str(c)) + '，签到时间：' + nowtime
                 print(strlog)
                 logging.info(strlog)
         except IndexError:
             checkin_info = self.match_result(str(soup))
             str_log = self.strip_tag(str(checkin_info[0])) + '，' + self.name + "已累计签到: " + self.strip_tag(str(checkin_info[1])) + '天，本月签到' + self.strip_tag(str(checkin_info[2])) + '天，上次时间' + self.strip_tag(str(checkin_info[3]))
-            print('sth is wrong')
             print(str_log)
             logging.info(str_log)
-            send_mail('usrrname', 'pin', 'recvr', 'server', "一亩三分地脚本异常报告", 465, str_log)
 
     def sign(self, url):
-        session = requests.Session()
-        response = session.get(url=url, headers=self._getHeaders(), cookies=make_cookies())
-        thepage = response.text
-
+        # logging.debug('start bbs sign : %s' % url)
+        req = urllib.request.Request(url, headers=self._getHeaders())
+        response = urllib.request.urlopen(req)
+        self.opener.open(req)
+        thepage = response.read() # .decode('utf-8')
         self._say(thepage)
 
     def login_bbs(self, url, data):
         # logging.debug( 'start bbs login : %s ' % url)
         req = urllib.request.Request(url=url, data=data, headers=self._getHeaders())
         self.opener.open(req)
-        response = urllib.request.urlopen(req)
-        thepage = response.read() # .decode('utf-8')
-        print(thepage)
 
     def login_data(self):
         # logging.debug(u'正在登陆 username : %s password : %s' % (self.name, self.password))
@@ -156,10 +140,9 @@ if __name__ == '__main__':
     sleep_time = (300 if (weekday > 4) else 0)
     sleep_time = sleep_time + 60 * random.random()
     print(sleep_time)
-    # time.sleep(sleep_time)  # 假装周末睡过头没有及时签到
-
+    time.sleep(sleep_time)  # 假装周末睡过头没有及时签到
     userlogin = yimu('username', 'password')
-    # bbs_login_data = userlogin.login_data()
-    # Login_Url = "https://www.1point3acres.com/bbs/member.php?mod=logging&action=login&loginsubmit=yes&infloat=yes&lssubmit=yes&inajax=1"
-    # userlogin.login_bbs(Login_Url, bbs_login_data)
+    bbs_login_data = userlogin.login_data()
+    Login_Url = "https://www.1point3acres.com/bbs/member.php?mod=logging&action=login&loginsubmit=yes&infloat=yes&lssubmit=yes&inajax=1"
+    userlogin.login_bbs(Login_Url, bbs_login_data)
     userlogin.sign('https://www.1point3acres.com/bbs/dsu_paulsign-sign.html')

@@ -33,6 +33,11 @@ Don't know if that will change someday in the future. If salt is added, more wor
 
 - 重新修复gbk编码问题，防止提交数据出现乱码
 
+### 20190417 v1.0.4
+
+- 近期地里更新了登录方法，添加了验证码，故改为cookies验证方式。  
+请将Chrome中cookies字段中的字符串保存为yimu-cookie.txt并与脚本置于同一目录下，或自行指定路径。
+
 ## 使用方法
 
 Works fine with 1point3acres 一亩三分地 check-in 签到 process.

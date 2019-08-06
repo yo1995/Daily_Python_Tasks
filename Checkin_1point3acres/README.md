@@ -1,5 +1,9 @@
 ## Description
 
+Update 190806: https://github.com/yo1995/Daily_Python_Tasks/issues/2
+
+似乎采用了验证码的新策略。
+
 ![logo](http://www.1point3acres.com/bbs/static/image/common/logo.png)
 
 A simple check in script for http://www.1point3acres.com/bbs/dsu_paulsign-sign.html
